@@ -1,0 +1,474 @@
+#include<iostream>
+#include<conio.h>
+#include<stdio.h>
+using namespace std;
+int main()
+{
+        char gen,family,sym1,sym2,sym3,sym4,sym5,sym6,sym7,h1,h2,h3,h4,h5,h6,h7;
+        int age,s_count,y_duration;
+        float a[100];
+        int k=0,c;
+        
+        cout<<"Gender (M/F): ";
+        cin>>gen;
+        int prob=0;
+        
+        
+        //for male diagnosis
+        if(gen=='M')
+        {
+            k=0;
+            cout<<"\nAge : ";
+            cin>>age;
+            //age under more risk
+            if(age>=50&&age<60)
+               {
+                     a[k]=2.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            //family history
+            cout<<"\nAnyone from family has/had any form of heart disease ? (Y/N) : ";
+            cin>>family;
+            //more risk --- history contains traces
+            if(family=='Y'||family=='y')
+            {
+                     a[k]=2.00;
+                        k++;
+            }
+            else{ a[k]=0.00; k++;}
+            //symptoms
+            cout<<"\nDo you have often have burning sensation in the chest or upper abdomen \n";
+            cin>>sym1;
+            if(sym1=='Y'||sym1=='y')
+           {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nShortness of breath ? (Y/N) : ";
+            cin>>sym2;
+            if(sym2=='Y'||sym2=='y')
+            {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nIrregular heart beat ? (Y/N) : ";
+                cin>>sym3;
+            if(sym3=='Y'||sym3=='y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nFeel Nausea often ? (Y/N) : ";
+            cin>>sym4;
+            if(sym4=='Y'||sym4=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nVomiting ? (Y/N) : ";
+            cin>>sym5;
+            if(sym5=='Y'||sym5=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nSweating ? (Y/N) : ";
+            cin>>sym6;
+            if(sym6=='Y'&&sym6=='y')
+            {
+                if((sym2=='Y'||sym2=='y')&&(sym3=='y'||sym3=='Y'))
+                    {
+                     a[k]=3.00;
+                        k++;
+                }
+            
+                 else if(sym3=='y'||sym3=='Y')
+                    {
+                        a[k]=2.00;
+                        k++;
+                }
+                else
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                   
+            }
+            else{ a[k]=0.00; k++;}
+            cout<<"Dizziness ? (Y/N)";
+            cin>>sym7;
+            if(sym7=='Y'||sym7=='y')
+            {
+                if((sym2=='Y'||sym2=='y')&&(sym3=='y'||sym3=='Y'))
+                    {
+                     a[k]=3.00;
+                        k++;
+                }
+                else if(sym3=='y'||sym3=='Y')
+                   {
+                     a[k]=2.00;
+                        k++;
+                }
+                else
+                    prob++;   
+        }
+        else{ a[k]=0.00; k++;}
+            //risk inreasers
+            cout<<"\nDo you Smoke ? (Y/N) : ";
+            cin>>h1;
+            if(h1=='y'||h1=='Y')
+            {
+                cout<<"\n How many a day ? ";
+                cin>>s_count;
+                cout<<"\n Since how many years ? ";
+                cin>>y_duration;
+                if(y_duration<=1)
+                {
+                    if(s_count<4)
+                        {
+                     a[k]=0.00;
+                        k++;
+                }
+                    else if(s_count>=4&&s_count<6)
+                        {
+                     a[k]=1.00;
+                        k++;
+                }
+                    else if(s_count>=6&&s_count<10)
+                       {
+                     a[k]=2.00;
+                        k++;
+                }
+                    else
+                       {
+                     a[k]=3.00;
+                        k++;
+                }
+                }
+                else
+                {
+                    if(s_count<4)
+                       {
+                     a[k]=1.00;
+                        k++;
+                }
+                    else if(s_count>=4&&s_count<6)
+                        {
+                     a[k]=2.00;
+                        k++;
+                }
+                    else if(s_count>=6&&s_count<10)
+                        {
+                     a[k]=3.00;
+                        k++;
+                }
+                    else
+                       {
+                     a[k]=4.00;
+                        k++;
+                }
+                }
+            }
+            else{ a[k]=0.00; k++;}
+            cout<<"\n Do you have unhealthy cholesterol or lipid levels (Y/N) ? : ";
+            cin>>h2;
+            if(h2=='y'||h2=='Y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+           
+            cout<<"\n Do you have high blood pressure level /ni.e., greater than 140/90 (Y/N) ?\n";
+            cin>>h3;
+            if(h3=='Y'||h3=='y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nDo you have Diabetes ? (Y/N) : ";
+            cin>>h4;
+            if(h4=='Y'||h4=='y')
+               {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nLack of exercise (Y/N) ? : ";
+            cin>>h5;
+            if(h5=='Y'||h5=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nObesity (Y/N) ? : ";
+            cin>>h6;
+            if(h6=='Y'||h6=='y')
+                {
+                     a[k]=2.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nAdvancing age (Y/N) ? : ";
+            cin>>h7;
+            if(h7=='y'||h7=='Y')
+                {
+                     a[k]=1.00;
+
+                }
+                else{ a[k]=0.00;}
+                c=k;
+       }
+  //female
+        else
+        {
+            k=0;
+            cout<<"\nAge : ";
+            cin>>age;
+            //age under more risk
+            if(age>=60&&age<70)
+               {
+                     a[k]=2.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            //family history
+            cout<<"\nAnyone from family has/had any form of heart disease ? (Y/N) : ";
+            cin>>family;
+            //more risk --- history contains traces
+            if(family=='Y'||family=='y')
+            {
+                     a[k]=2.00;
+                        k++;
+            }
+            else{ a[k]=0.00; k++;}
+            //symptoms
+            cout<<"\nDo you have often have burning sensation in the chest or upper abdomen \n";
+            cin>>sym1;
+            if(sym1=='Y'||sym1=='y')
+           {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nShortness of breath ? (Y/N) : ";
+            cin>>sym2;
+            if(sym2=='Y'||sym2=='y')
+            {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nIrregular heart beat ? (Y/N) : ";
+                cin>>sym3;
+            if(sym3=='Y'||sym3=='y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nFeel Nausea often ? (Y/N) : ";
+            cin>>sym4;
+            if(sym4=='Y'||sym4=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nVomiting ? (Y/N) : ";
+            cin>>sym5;
+            if(sym5=='Y'||sym5=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nSweating ? (Y/N) : ";
+            cin>>sym6;
+            if(sym6=='Y'&&sym6=='y')
+            {
+                if((sym2=='Y'||sym2=='y')&&(sym3=='y'||sym3=='Y'))
+                    {
+                     a[k]=3.00;
+                        k++;
+                }
+            
+                 else if(sym3=='y'||sym3=='Y')
+                    {
+                        a[k]=2.00;
+                        k++;
+                }
+                else
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                   
+            }
+            else{ a[k]=0.00; k++;}
+            cout<<"Dizziness ? (Y/N)";
+            cin>>sym7;
+            if(sym7=='Y'||sym7=='y')
+            {
+                if((sym2=='Y'||sym2=='y')&&(sym3=='y'||sym3=='Y'))
+                    {
+                     a[k]=3.00;
+                        k++;
+                }
+                else if(sym3=='y'||sym3=='Y')
+                   {
+                     a[k]=2.00;
+                        k++;
+                }
+                else
+                    prob++;   
+        }
+        else{ a[k]=0.00; k++;}
+            //risk inreasers
+            cout<<"\nDo you Smoke ? (Y/N) : ";
+            cin>>h1;
+            if(h1=='y'||h1=='Y')
+            {
+                cout<<"\n How many a day ? ";
+                cin>>s_count;
+                cout<<"\n Since how many years ? ";
+                cin>>y_duration;
+                if(y_duration<=1)
+                {
+                    if(s_count<4)
+                        {
+                     a[k]=0.00;
+                        k++;
+                }
+                    else if(s_count>=4&&s_count<6)
+                        {
+                     a[k]=1.00;
+                        k++;
+                }
+                    else if(s_count>=6&&s_count<10)
+                       {
+                     a[k]=2.00;
+                        k++;
+                }
+                    else
+                       {
+                     a[k]=3.00;
+                        k++;
+                }
+                }
+                else
+                {
+                    if(s_count<4)
+                       {
+                     a[k]=1.00;
+                        k++;
+                }
+                    else if(s_count>=4&&s_count<6)
+                        {
+                     a[k]=2.00;
+                        k++;
+                }
+                    else if(s_count>=6&&s_count<10)
+                        {
+                     a[k]=3.00;
+                        k++;
+                }
+                    else
+                       {
+                     a[k]=4.00;
+                        k++;
+                }
+                }
+            }
+            else{ a[k]=0.00; k++;}
+            cout<<"\n Do you have unhealthy cholesterol or lipid levels (Y/N) ? : ";
+            cin>>h2;
+            if(h2=='y'||h2=='Y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+           
+            cout<<"\n Do you have high blood pressure level /ni.e., greater than 150/90 (Y/N) ?\n";
+            cin>>h3;
+            if(h3=='Y'||h3=='y')
+                {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nDo you have Diabetes ? (Y/N) : ";
+            cin>>h4;
+            if(h4=='Y'||h4=='y')
+               {
+                     a[k]=3.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nLack of exercise (Y/N) ? : ";
+            cin>>h5;
+            if(h5=='Y'||h5=='y')
+                {
+                     a[k]=1.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nObesity (Y/N) ? : ";
+            cin>>h6;
+            if(h6=='Y'||h6=='y')
+                {
+                     a[k]=2.00;
+                        k++;
+                }
+                else{ a[k]=0.00; k++;}
+            cout<<"\nAdvancing age (Y/N) ? : ";
+            cin>>h7;
+            if(h7=='y'||h7=='Y')
+                {
+                     a[k]=1.00;
+
+                }
+                else{ a[k]=0.00;}
+                c=k;
+    }
+   
+   
+    float calculate;
+    float sum=0.00;
+    for(int i=0;i<c;i++)
+    {
+        sum=sum+a[i];
+    }
+   
+  calculate=sum/35;
+    cout<<"\nprobability of you having CAD is "<<(sum/35);
+    if(calculate<=0.2)
+    {
+        cout<<"\nDon't have to worry ... follow a healthy diet \n"; 
+    }
+    else if(calculate>=0.2&&calculate<0.5)
+    {
+        cout<<"A.Routine tests.\n 1.blood pressure test.\n 2.cholestrol test\n";
+        cout<<"B.lifestyle\n 1.regular physical activity \n 2.increase garlic intake \n 3.increase soluble fibre intake \n 4.reduce saturated and trans fatty acid and N3 fatty acids \n";
+        cout<<"\n CONSULT DOCTOR\n";
+    }
+    else
+    {
+        cout<<"\nA.Routine tests.\n 1.blood pressure test.\n 2.cholestrol test\n";
+        cout<<"\nB.lifestyle\n 1.regular physical activity \n 2.increase garlic intake \n 3.increase soluble fibre intake \n 4.reduce saturated and trans fatty acid and N3 fatty acids \n";
+        cout<<"\nC.Surgeries Suggested\n 1. Coron arteries bypass grafting \n 2.Angioplasty";
+        cout<<"\n\n CONSULT DOCTOR IMMEDIATELY\n";
+    }
+    getch();
+    return 0;
+}
+        
